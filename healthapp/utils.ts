@@ -1,4 +1,4 @@
-export const isNotNumber = (number: string): boolean => {
+export const isNotNumber = (number: any): boolean => {
   const arg = Number(number);
   if (typeof arg === 'number' && !isNaN(arg)) {
     return false;
