@@ -1,6 +1,6 @@
 import { parseBmiArgs } from './utils.ts';
 
-const bmiCalculator = (height: number, weight: number) => {
+export const bmiCalculator = (height: number, weight: number) => {
   const bmi = weight / ((height / 100) * (height / 100));
   if (bmi < 16) {
     return 'Underweight (severe thinness)';
@@ -21,13 +21,15 @@ const bmiCalculator = (height: number, weight: number) => {
   }
 };
 
-try {
-  const [height, weight] = parseBmiArgs(process.argv);
-  console.log(bmiCalculator(height, weight));
-} catch (error: unknown) {
-  let errorMessage = 'Something went wrong. ';
-  if (error instanceof Error) {
-    errorMessage += error.message;
+if (process.argv[1] === import.meta.filename) {
+  try {
+    const [height, weight] = parseBmiArgs(process.argv);
+    console.log(bmiCalculator(height, weight));
+  } catch (error: unknown) {
+    let errorMessage = 'Something went wrong. ';
+    if (error instanceof Error) {
+      errorMessage += error.message;
+    }
+    console.log(errorMessage);
   }
-  console.log(errorMessage);
 }
