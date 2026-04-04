@@ -8,7 +8,7 @@ app.get('/hello', (_req, res) => {
 });
 
 app.get('/bmi', (req, res) => {
-  if (isNotNumber(req.query.height) || isNotNumber(req.query.weight)) {
+  if (isNotNumber(req.query.height as string) || isNotNumber(req.query.weight as string)) {
     res.status(400).send({ error: 'malformatted errors' });
   }
   
@@ -21,7 +21,7 @@ app.get('/bmi', (req, res) => {
     weight,
     height,
     bmi
-  })
+  });
 });
 
 const PORT = 3001;
