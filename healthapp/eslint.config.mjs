@@ -11,7 +11,7 @@ export default tseslint.config({
   languageOptions: {
     parserOptions: {
       project: true,
-      tsconfigRootDir: import.meta.filename
+      tsconfigRootDir: import.meta.dirname
     },
   },
   plugins: {
